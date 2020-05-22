@@ -1,0 +1,59 @@
+service: app
+
+provider:
+    name: aws
+    region: us-east-1
+    runtime: provided
+    profile: bref
+
+plugins:
+    - ./vendor/bref/bref
+
+functions:
+    index:
+        handler: app/index.php
+        timeout: 28 # in seconds (API Gateway has a timeout of 29 seconds)
+        layers:
+            - ${bref:layer.php-73-fpm}
+        events:
+            - http:
+                  path: /
+                  method: GET
+    sendToken:
+        handler: app/index.php
+        layers:
+            - ${bref:layer.php-73-fpm}
+        events:
+            - http:
+                  path: /send
+                  method: POST
+    resendToken:
+        handler: app/index.php
+        layers:
+            - ${bref:layer.php-73-fpm}
+        events:
+            - http:
+                  path: /resend
+                  method: POST
+    verifyToken:
+        handler: app/index.php
+        layers:
+            - ${bref:layer.php-73-fpm}
+        events:
+            - http:
+                path: /verify
+                method: POST
+    cancelVerification:
+        handler: app/index.php
+        layers:
+            - ${bref:layer.php-73-fpm}
+        events:
+            - http:
+                  path: /cancel
+                  method: POST
+
+# Exclude files from deployment
+package:
+    exclude:
+        - 'node_modules/**'
+        - 'tests/**'
