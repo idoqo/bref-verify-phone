@@ -3,7 +3,9 @@
         "bref/bref": "^0.5.24",
         "slim/slim": "^4.5",
         "slim/psr7": "^1.1",
-        "ext-json": "*"
+        "ext-json": "*",
+        "twilio/sdk": "^6.5",
+        "vlucas/phpdotenv": "^4.1"
     },
     "autoload": {
         "psr-4": {
