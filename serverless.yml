@@ -27,14 +27,6 @@ functions:
             - http:
                   path: /send
                   method: POST
-    resendToken:
-        handler: app/index.php
-        layers:
-            - ${bref:layer.php-73-fpm}
-        events:
-            - http:
-                  path: /resend
-                  method: POST
     verifyToken:
         handler: app/index.php
         layers:
@@ -43,14 +35,6 @@ functions:
             - http:
                 path: /verify
                 method: POST
-    cancelVerification:
-        handler: app/index.php
-        layers:
-            - ${bref:layer.php-73-fpm}
-        events:
-            - http:
-                  path: /cancel
-                  method: POST
 
 # Exclude files from deployment
 package:

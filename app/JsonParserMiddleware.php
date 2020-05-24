@@ -20,7 +20,7 @@ class JsonParserMiddleware implements MiddlewareInterface
             return $handler->handle($request);
         } else {
             $response = new \Slim\Psr7\Response();
-            $payload = ['message' => "Bad request"];
+            $payload = ['error' => "Bad request"];
             $response->getBody()->write(json_encode($payload));
             return $response
                 ->withHeader("Content-type", "application/json")
