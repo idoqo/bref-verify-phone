@@ -1,10 +1,10 @@
-service: app
+service: twilio-verify
 
 provider:
     name: aws
     region: us-west-2
     runtime: provided
-    profile: bref
+    profile: bref-twilio-verify
 
 plugins:
     - ./vendor/bref/bref
